@@ -1,0 +1,20 @@
+.main-image {
+	max-height: 200px;
+	align: center;
+}
+
+.shiny-app {
+	border: none;
+	height: 100vh;
+	width: 100vw;
+}
+
+
+/* Adjust the default bootstrap breadcrumbs,
+   thanks to http://bootstrapdesigntools.com/ */
+.breadcrumb {background: rgba(255, 255, 255, 1); border: 0px solid rgba(245, 245, 245, 1); border-radius: 4px; display: block;}
+.breadcrumb li {font-size: 14px;}
+.breadcrumb a {color: rgba(66, 139, 202, 1);}
+.breadcrumb a:hover {color: rgba(42, 100, 150, 1);}
+.breadcrumb>.active {color: rgba(153, 153, 153, 1);}
+.breadcrumb>li+li:before {color: rgba(204, 204, 204, 1); content: "\005C\00a0";}
