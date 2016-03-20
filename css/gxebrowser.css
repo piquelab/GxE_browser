@@ -9,6 +9,18 @@
 	width: 100vw;
 }
 
+.tab-pane > select {
+	height: 200px;
+	/*width: 200px;*/
+}
+
+p.note {
+	font-size: small;
+	color: #AAAAAA;
+	font-style: italic;
+	margin-bottom: 2px;
+	padding-left: 5px;
+}
 
 /* Adjust the default bootstrap breadcrumbs,
    thanks to http://bootstrapdesigntools.com/ */
@@ -18,3 +30,4 @@
 .breadcrumb a:hover {color: rgba(42, 100, 150, 1);}
 .breadcrumb>.active {color: rgba(153, 153, 153, 1);}
 .breadcrumb>li+li:before {color: rgba(204, 204, 204, 1); content: "\005C\00a0";}
+
