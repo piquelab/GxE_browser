@@ -14,12 +14,22 @@
 	/*width: 200px;*/
 }
 
+.track-select {
+	height: 200px;
+	/*width: 200px;*/
+}
+
 p.note {
 	font-size: small;
 	color: #AAAAAA;
 	font-style: italic;
 	margin-bottom: 2px;
 	padding-left: 5px;
+}
+
+p.help {
+	font-size: small;
+	color: #AAAAAA;
 }
 
 /* Adjust the default bootstrap breadcrumbs,

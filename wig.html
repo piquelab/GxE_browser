@@ -86,16 +86,20 @@
     </ol>
 
     <!-- Page Content -->
-    <div class="container">
-
+    <div class="container" style="display: table-cell">
       <h1>GxE Browser</h1>
 
-      <!-- Trigger the add track modal -->
-      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#trackModal">Add Tracks</button>
-
-      <!-- Allow user to remove all tracks currently on the browser -->
-      <button type="button" class="btn btn-warning btn-sm" id="js-rm-tracks">Remove Tracks</button>
-
+      <div class="row">
+        <div class="col-md-3">
+          <!-- Trigger the add track modal -->
+          <button type="button" style="margin: 5px;" class="btn btn-info btn-sm" data-toggle="modal" data-target="#trackModal">Add Tracks</button>
+          <!-- Allow user to remove all tracks currently on the browser -->
+          <button type="button" style="margin: 5px;" class="btn btn-warning btn-sm" id="js-rm-tracks">Remove Tracks</button>
+        </div> <!-- end controls -->
+        <div class="col-md-9">
+          <p class="help">Select "Add Tracks" to add sequencing data to the browser. "Remove tracks" will clear all tracks currently displayed. To change regions, either 1) click and drag left or right anywhere in the browser, 2) enter coordinates in the upper left search bar (chr:start-end), or 3) enter a gene symbol in the search bar.</p>
+        </div> 
+      </div> <!-- end row -->
     </div> <!-- end container -->
 
     <hr />
