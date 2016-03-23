@@ -32,6 +32,14 @@ p.help {
 	color: #AAAAAA;
 }
 
+p.caption {
+	font-size: small;
+}
+
+h4.caption {
+	font-weight: bold;
+}
+
 /* Adjust the default bootstrap breadcrumbs,
    thanks to http://bootstrapdesigntools.com/ */
 .breadcrumb {background: rgba(255, 255, 255, 1); border: 0px solid rgba(245, 245, 245, 1); border-radius: 4px; display: block;}
