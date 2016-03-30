@@ -32,6 +32,11 @@ p.help {
 	color: #AAAAAA;
 }
 
+p.title {
+	text-decoration: underline;
+	margin-bottom: 3px;
+}
+
 p.caption {
 	font-size: small;
 }
@@ -39,6 +44,11 @@ p.caption {
 h4.caption {
 	font-weight: bold;
 }
+
+.track-input {
+	width: 65px;
+}
+
 
 /* Adjust the default bootstrap breadcrumbs,
    thanks to http://bootstrapdesigntools.com/ */
