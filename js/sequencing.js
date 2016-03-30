@@ -67,9 +67,19 @@ $('document').ready(function() {
 			var tracks = track_data["celltypes"][ctIdx]["treatments"][txIdx]["tracks"]
 			tracks.forEach(function(track){
 				console.log("Adding track " + track.url);
-				track.order = Session.TrackCounter; // Add tracks in order
+				
+				// Add tracks in order
+				track.order = Session.TrackCounter;
+
+				// Check if track parameters have been saved
+				if( Session.dataRangeMin != undefined ) {
+					track.min = Session.dataRangeMin;
+				}
+				if( Session.dataRangeMax != undefined ) {
+					track.max = Session.dataRangeMax;
+				}
 				igv.browser.loadTrack(track);
-				Session.TrackCounter += 1 // Increment the counter
+				Session.TrackCounter += 1
 			})
 			// for( var i = 0; i < tracks.length; i++ ) {
 			// 	console.log("Adding track " + tracks[i]["url"]);
@@ -77,6 +87,10 @@ $('document').ready(function() {
 			// 	igv.browser.loadTrack( tracks[i] )
 			// }
 		})
+		// Update the browser so the track height changes take effect
+		if( Session.trackHeight != undefined ) {
+			$("#js-set-track-height").click();
+		}
 
 		// Finally, clear the selections and close the modal
 		$(".track-select").children().removeAttr("selected");
@@ -104,6 +118,8 @@ $('document').ready(function() {
 		for( var i=3; i<igv.browser.trackViews.length; i++) {
 			igv.browser.trackViews[i].setTrackHeight(height);
 		}
+		// Store the height so that newly added tracks can be set appropriately
+		Session.trackHeight = height;
 	}) // end js-set-track-height
 
 	// Function to set the data range of current tracks
@@ -114,6 +130,10 @@ $('document').ready(function() {
 			igv.browser.trackViews[i].track.min=min; igv.browser.trackViews[i].track.max=max 
 		}
 		igv.browser.update();
+		// Store the min and max so that newly added tracks can be set appropriately
+		Session.dataRangeMin = min;
+		Session.dataRangeMax = max;
+
 	})
 
 })
