@@ -106,4 +106,14 @@ $('document').ready(function() {
 		}
 	}) // end js-set-track-height
 
+	// Function to set the data range of current tracks
+	$("#js-set-data-range").click(function(){
+		var min = $("#input-data-range-min").val();
+		var max = $("#input-data-range-max").val();
+		for( var i=3; i<igv.browser.trackViews.length; i++) { 
+			igv.browser.trackViews[i].track.min=min; igv.browser.trackViews[i].track.max=max 
+		}
+		igv.browser.update();
+	})
+
 })
