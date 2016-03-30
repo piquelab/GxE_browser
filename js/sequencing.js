@@ -96,4 +96,14 @@ $('document').ready(function() {
 		}
 		Session.TrackCounter = 0;
 	}) // end js-rm-tracks
+
+	// Function to set the track height
+	$("#js-set-track-height").click(function(){
+		var height = $("#input-track-height").val();
+		// Data tracks start at 3, 0-2 are spacing and gene tracks
+		for( var i=3; i<igv.browser.trackViews.length; i++) {
+			igv.browser.trackViews[i].setTrackHeight(height);
+		}
+	}) // end js-set-track-height
+
 })
