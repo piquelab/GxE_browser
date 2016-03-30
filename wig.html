@@ -89,20 +89,51 @@
     </ol>
 
     <!-- Page Content -->
-    <div class="container" style="display: table-cell">
+    <div class="container">
       <h1>GxE Browser</h1>
+<!--       <div>
+        <p class="help"><a href="#">Show/Hide track controls</a></p>
+      </div>
+ -->      <div class="row"> <!-- outer row -->
+        
+        <div class="col-sm-3"> <!-- outer left column -->
 
-      <div class="row">
-        <div class="col-md-3">
-          <!-- Trigger the add track modal -->
-          <button type="button" style="margin: 5px;" class="btn btn-info btn-sm" data-toggle="modal" data-target="#trackModal">Add Tracks</button>
-          <!-- Allow user to remove all tracks currently on the browser -->
-          <button type="button" style="margin: 5px;" class="btn btn-warning btn-sm" id="js-rm-tracks">Remove Tracks</button>
-        </div> <!-- end controls -->
-        <div class="col-md-9">
-          <p class="help">Select "Add Tracks" to add sequencing data to the browser. "Remove tracks" will clear all tracks currently displayed. To change regions, either 1) click and drag left or right anywhere in the browser, 2) enter coordinates in the upper left search bar (chr:start-end), or 3) enter a gene symbol in the search bar.</p>
-        </div> 
-      </div> <!-- end row -->
+          <div class="well well-sm track-control-group">
+            
+            <div class="form-group">
+              <label>Track Control</label><br />
+              <!-- Trigger the add track modal -->
+              <button type="button" style="margin: 5px;" class="btn btn-info btn-sm" data-toggle="modal" data-target="#trackModal">Add Tracks</button>
+              <!-- Allow user to remove all tracks currently on the browser -->
+              <button type="button" style="margin: 5px;" class="btn btn-warning btn-sm" id="js-rm-tracks">Remove Tracks</button>
+            </div>
+            
+            <div class="form-group">
+              <label>Data Range (RPM):</label><br />
+              <input type="text" id="input-data-range-min" class="form-inline input-sm track-input" placeholder="Min">
+              <input type="text" id="input-data-range-max" class="form-inline input-sm track-input"  placeholder="Max">
+              <button class="btn btn-sm btn-primary" id="js-set-data-range">Set</button>
+            </div>
+            
+            <div class="form-group">
+              <label>Track Height (px):</label><br />
+              <input type="text" id="input-track-height" class="form-inline input-sm track-input" placeholder="Height">
+              <button class="btn btn-sm btn-primary" id="js-set-track-height">Set</button>
+            </div>
+          </div>
+        </div> <!-- end outer left column -->
+        
+        <div class="col-sm-8"> <!-- outer right column -->
+          <div>
+            <p class="help title">Adding & Removing Tracks</p>
+            <p class="help">Select "Add Tracks" to add sequencing data to the browser. "Remove tracks" will clear all tracks currently displayed.</p>
+            <p class="help title">Adjusting Track Height and Data Range</p>
+            <p class="help">Adjust the tracks using the control panel on the left. The data range adjusts the minimum and maximum value (in reads per million, RPM) displayed in the tracks (the default varies per track and is chosen by the IGV browser). Pressing "Set" will snap all current tracks to the range specified. The track height sets the physical height of the track on the page (default is 100px). Pressing "Set" will set all current track heights to the value specified.</p>
+            <p class="help title">Changing Regions and Searching</p>
+            <p class="help">To change regions, either 1) click and drag left or right anywhere in the browser, 2) enter coordinates in the upper left search bar (chr:start-end), or 3) enter a gene symbol in the search bar.</p>
+          </div>
+        </div> <!-- end outer right column -->
+      </div> <!-- end outer row -->
     </div> <!-- end container -->
 
     <hr />
