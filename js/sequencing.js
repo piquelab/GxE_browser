@@ -67,18 +67,29 @@ $('document').ready(function() {
 			var tracks = track_data["celltypes"][ctIdx]["treatments"][txIdx]["tracks"]
 			tracks.forEach(function(track){
 				console.log("Adding track " + track.url);
-				track.order = Session.TrackCounter; // Add tracks in order
-				igv.browser.loadTrack(track);
-				Session.TrackCounter += 1 // Increment the counter
-			})
-			// for( var i = 0; i < tracks.length; i++ ) {
-			// 	console.log("Adding track " + tracks[i]["url"]);
-			// 	// Add track using the IGV API
-			// 	igv.browser.loadTrack( tracks[i] )
-			// }
-		})
+				
+				// Add tracks in order
+				track.order = Session.TrackCounter;
 
-		// Finally, clear the selections and close the modal
+				// Check if track parameters have been saved
+				if( Session.dataRangeMin != undefined ) {
+					track.min = Session.dataRangeMin;
+				}
+				if( Session.dataRangeMax != undefined ) {
+					track.max = Session.dataRangeMax;
+				}
+				igv.browser.loadTrack(track);
+				$(igv.browser.trackViews[igv.browser.trackViews.length-1].leftHandGutter).addClass("gutter-range");
+				Session.TrackCounter += 1;
+
+			}) // end tracks.forEach
+		}) // end :selected each
+		// Update the browser so the track height changes take effect
+		if( Session.trackHeight != undefined ) {
+			$("#js-set-track-height").click();
+		}
+
+		// Clear the selections and close the modal
 		$(".track-select").children().removeAttr("selected");
 		$('#trackModal').modal('hide');
 	}) // end js-add-tracks onclick
@@ -96,4 +107,41 @@ $('document').ready(function() {
 		}
 		Session.TrackCounter = 0;
 	}) // end js-rm-tracks
+
+	// Function to set the track height
+	$("#js-set-track-height").click(function(){
+		var height = parseFloat($("#input-track-height").val());
+		if( height ) { // user entered not a number
+			$("#track-height-form>div.alert").fadeOut(250); // if user had been warned
+			// Data tracks start at 3, 0-2 are spacing and gene tracks
+			for( var i=3; i<igv.browser.trackViews.length; i++) {
+				igv.browser.trackViews[i].setTrackHeight(height);
+			}
+			// Store the height so that newly added tracks can be set appropriately
+			Session.trackHeight = height;
+		} else {
+			// Alert the user
+			$("#track-height-form>div.alert").fadeIn(250);
+		}
+	}) // end js-set-track-height
+
+	// Function to set the data range of current tracks
+	$("#js-set-data-range").click(function(){
+		var min = parseFloat($("#input-data-range-min").val());
+		var max = parseFloat($("#input-data-range-max").val());
+		if( (min || min==0) && (max || max==0) ) { // 0 is a valid input
+			$("#track-range-form>div.alert").fadeOut(250); // if user had been warned
+			for( var i=3; i<igv.browser.trackViews.length; i++) { 
+				igv.browser.trackViews[i].track.min=min; igv.browser.trackViews[i].track.max=max 
+			}
+			igv.browser.update();
+			// Store the min and max so that newly added tracks can be set appropriately
+			Session.dataRangeMin = min;
+			Session.dataRangeMax = max;
+		} else {
+			// Alert the user
+			$("#track-range-form>div.alert").fadeIn(250);
+		}
+	}) // end js-set-data-range
+
 })
