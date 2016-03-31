@@ -79,22 +79,42 @@ $('document').ready(function() {
 					track.max = Session.dataRangeMax;
 				}
 				igv.browser.loadTrack(track);
-				Session.TrackCounter += 1
-			})
-			// for( var i = 0; i < tracks.length; i++ ) {
-			// 	console.log("Adding track " + tracks[i]["url"]);
-			// 	// Add track using the IGV API
-			// 	igv.browser.loadTrack( tracks[i] )
-			// }
-		})
+				$(igv.browser.trackViews[igv.browser.trackViews.length-1].leftHandGutter).addClass("gutter-range");
+				Session.TrackCounter += 1;
+
+			}) // end tracks.forEach
+		}) // end :selected each
 		// Update the browser so the track height changes take effect
 		if( Session.trackHeight != undefined ) {
 			$("#js-set-track-height").click();
 		}
 
-		// Finally, clear the selections and close the modal
+		// Clear the selections and close the modal
 		$(".track-select").children().removeAttr("selected");
 		$('#trackModal').modal('hide');
+
+		// // The data range for each track is defined once the track is finished 
+		// // loading. Use an intervalTimer to check for tracks that have finished 
+		// // loading and when they have, add the data range labels to the left gutter.
+		// function setGutterRange() {
+		// 	for( var i=3; i<igv.browser.trackViews.length; i++ ) {
+		// 		var tv = igv.browser.trackViews[i];
+		// 		var dr = tv.track.dataRange;
+		// 		if ( dr != undefined & !$(tv.leftHandGutter).hasClass("gutter-track") ) {
+		// 			$(tv.leftHandGutter).
+		// 				addClass("gutter-track").
+		// 				append("<div class='gutter-track-max'>" + Math.round(dr.max*100)/100 + "</div>").
+		// 				append("<div class='gutter-track-min'>" + Math.round(dr.min*100)/100 + "</div>");					
+		// 		}
+		// 	}
+		// 	// Check if all gutter labels have been added
+		// 	if( $(".gxe-track").length == igv.browser.trackViews.length-3) {
+		// 		clearTimeout(timeoutHandler);
+		// 	}
+		// }
+		// // every 1/2 second, try to update the data range labels in the left gutter
+		// var timeoutHandler = setInterval( setGutterRange, 500)
+
 	}) // end js-add-tracks onclick
 
 	// Clear all tracks from the browser
