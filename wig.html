@@ -30,7 +30,11 @@
 
     <!-- Core IGV JS Library-->
     <!-- <script type="text/javascript" src="//igv.org/web/beta/igv-beta.js"></script> -->
-    <script type="text/javascript" src="//igv.org/web/release/0.9.3/igv-0.9.3.js"></script>
+    <!-- <script type="text/javascript" src="//igv.org/web/release/0.9.3/igv-0.9.3.js"></script>-->
+    <script type="text/javascript" src="js/igv.0.9.3.gmb.js"></script>
+
+    <!-- My own updates to the IGV library -->
+    <script type="text/javascript" src="js/igv.addOns.gmb.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -89,20 +93,60 @@
     </ol>
 
     <!-- Page Content -->
-    <div class="container" style="display: table-cell">
+    <div class="container">
       <h1>GxE Browser</h1>
 
-      <div class="row">
-        <div class="col-md-3">
-          <!-- Trigger the add track modal -->
-          <button type="button" style="margin: 5px;" class="btn btn-info btn-sm" data-toggle="modal" data-target="#trackModal">Add Tracks</button>
-          <!-- Allow user to remove all tracks currently on the browser -->
-          <button type="button" style="margin: 5px;" class="btn btn-warning btn-sm" id="js-rm-tracks">Remove Tracks</button>
-        </div> <!-- end controls -->
-        <div class="col-md-9">
-          <p class="help">Select "Add Tracks" to add sequencing data to the browser. "Remove tracks" will clear all tracks currently displayed. To change regions, either 1) click and drag left or right anywhere in the browser, 2) enter coordinates in the upper left search bar (chr:start-end), or 3) enter a gene symbol in the search bar.</p>
-        </div> 
-      </div> <!-- end row -->
+      <div class="track-control-div">
+        <div class="row">
+          <div class="col-sm-3"> <!-- left column -->
+
+            <div class="well well-sm track-control-group">
+
+              <div class="form-group" id="track-button-form">
+                <label>Track Control</label><br />
+                <!-- Trigger the add track modal -->
+                <button type="button" style="margin: 5px;" class="btn btn-info btn-sm" data-toggle="modal" data-target="#trackModal">Add Tracks</button>
+                <!-- Allow user to remove all tracks currently on the browser -->
+                <button type="button" style="margin: 5px;" class="btn btn-warning btn-sm" id="js-rm-tracks">Remove Tracks</button>
+              </div>
+              
+              <div class="form-group" id="track-range-form">
+                <label>Data Range (RPM):</label><br />
+                <input type="text" id="input-data-range-min" class="form-inline input-sm track-input" placeholder="Min">
+                <input type="text" id="input-data-range-max" class="form-inline input-sm track-input"  placeholder="Max">
+                <button class="btn btn-sm btn-primary" id="js-set-data-range">Set</button>
+                <!-- Alert the user on invalid input -->
+                <div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:5px; margin-bottom:0px; padding-top: 5px; padding-bottom:5px; display: none;">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  Value must be numeric!
+                </div>
+              </div>
+              
+              <div class="form-group" id="track-height-form">
+                <label>Track Height (px):</label><br />
+                <input type="text" id="input-track-height" class="form-inline input-sm track-input" placeholder="Height">
+                <button class="btn btn-sm btn-primary" id="js-set-track-height">Set</button>
+                <!-- Alert the user on invalid input -->
+                <div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:5px; margin-bottom:0px; padding-top: 5px; padding-bottom:5px; display: none;">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  Value must be numeric & >0!
+                </div>
+              </div>
+            </div>
+          </div> <!-- end left column -->
+          
+          <div class="col-sm-9"> <!-- right column -->
+            <div>
+              <p class="help title">Adding & Removing Tracks</p>
+              <p class="help">Select "Add Tracks" to add sequencing data to the browser. "Remove tracks" will clear all tracks currently displayed.</p>
+              <p class="help title">Adjusting Track Height and Data Range</p>
+              <p class="help">Adjust the tracks using the control panel on the left. The data range adjusts the minimum and maximum value (in reads per million, RPM) displayed in the tracks (the default varies per track and is chosen by the IGV browser). Pressing "Set" will snap all current tracks to the range specified. The track height sets the physical height of the track on the page (default is 100px). Pressing "Set" will set all current track heights to the value specified.</p>
+              <p class="help title">Changing Regions and Searching</p>
+              <p class="help">To change regions, either 1) click and drag left or right anywhere in the browser, 2) enter coordinates in the upper left search bar (chr:start-end), or 3) enter a gene symbol in the search bar.</p>
+            </div>
+          </div> <!-- end right column -->
+        </div> <!-- end row -->
+      </div> <!-- end track control div -->
     </div> <!-- end container -->
 
     <hr />
