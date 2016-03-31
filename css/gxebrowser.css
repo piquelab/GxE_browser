@@ -55,14 +55,14 @@ h4.caption {
 }
 .gutter-range-max {
 	color: #AAAAAA;
-	font-size: small; 
+	font-size: x-small; 
 	position: absolute; 
 	top: 0; 
 	right: 3px
 }
 .gutter-range-min {
 	color: #AAAAAA;
-	font-size: small; 
+	font-size: x-small; 
 	position: absolute; 
 	bottom: 0; 
 	right: 3px

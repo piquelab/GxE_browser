@@ -92,29 +92,6 @@ $('document').ready(function() {
 		// Clear the selections and close the modal
 		$(".track-select").children().removeAttr("selected");
 		$('#trackModal').modal('hide');
-
-		// // The data range for each track is defined once the track is finished 
-		// // loading. Use an intervalTimer to check for tracks that have finished 
-		// // loading and when they have, add the data range labels to the left gutter.
-		// function setGutterRange() {
-		// 	for( var i=3; i<igv.browser.trackViews.length; i++ ) {
-		// 		var tv = igv.browser.trackViews[i];
-		// 		var dr = tv.track.dataRange;
-		// 		if ( dr != undefined & !$(tv.leftHandGutter).hasClass("gutter-track") ) {
-		// 			$(tv.leftHandGutter).
-		// 				addClass("gutter-track").
-		// 				append("<div class='gutter-track-max'>" + Math.round(dr.max*100)/100 + "</div>").
-		// 				append("<div class='gutter-track-min'>" + Math.round(dr.min*100)/100 + "</div>");					
-		// 		}
-		// 	}
-		// 	// Check if all gutter labels have been added
-		// 	if( $(".gxe-track").length == igv.browser.trackViews.length-3) {
-		// 		clearTimeout(timeoutHandler);
-		// 	}
-		// }
-		// // every 1/2 second, try to update the data range labels in the left gutter
-		// var timeoutHandler = setInterval( setGutterRange, 500)
-
 	}) // end js-add-tracks onclick
 
 	// Clear all tracks from the browser
@@ -133,27 +110,38 @@ $('document').ready(function() {
 
 	// Function to set the track height
 	$("#js-set-track-height").click(function(){
-		var height = $("#input-track-height").val();
-		// Data tracks start at 3, 0-2 are spacing and gene tracks
-		for( var i=3; i<igv.browser.trackViews.length; i++) {
-			igv.browser.trackViews[i].setTrackHeight(height);
+		var height = parseFloat($("#input-track-height").val());
+		if( height ) { // user entered not a number
+			$("#track-height-form>div.alert").fadeOut(250); // if user had been warned
+			// Data tracks start at 3, 0-2 are spacing and gene tracks
+			for( var i=3; i<igv.browser.trackViews.length; i++) {
+				igv.browser.trackViews[i].setTrackHeight(height);
+			}
+			// Store the height so that newly added tracks can be set appropriately
+			Session.trackHeight = height;
+		} else {
+			// Alert the user
+			$("#track-height-form>div.alert").fadeIn(250);
 		}
-		// Store the height so that newly added tracks can be set appropriately
-		Session.trackHeight = height;
 	}) // end js-set-track-height
 
 	// Function to set the data range of current tracks
 	$("#js-set-data-range").click(function(){
-		var min = $("#input-data-range-min").val();
-		var max = $("#input-data-range-max").val();
-		for( var i=3; i<igv.browser.trackViews.length; i++) { 
-			igv.browser.trackViews[i].track.min=min; igv.browser.trackViews[i].track.max=max 
+		var min = parseFloat($("#input-data-range-min").val());
+		var max = parseFloat($("#input-data-range-max").val());
+		if( (min || min==0) && (max || max==0) ) { // 0 is a valid input
+			$("#track-range-form>div.alert").fadeOut(250); // if user had been warned
+			for( var i=3; i<igv.browser.trackViews.length; i++) { 
+				igv.browser.trackViews[i].track.min=min; igv.browser.trackViews[i].track.max=max 
+			}
+			igv.browser.update();
+			// Store the min and max so that newly added tracks can be set appropriately
+			Session.dataRangeMin = min;
+			Session.dataRangeMax = max;
+		} else {
+			// Alert the user
+			$("#track-range-form>div.alert").fadeIn(250);
 		}
-		igv.browser.update();
-		// Store the min and max so that newly added tracks can be set appropriately
-		Session.dataRangeMin = min;
-		Session.dataRangeMax = max;
-
-	})
+	}) // end js-set-data-range
 
 })
