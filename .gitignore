@@ -3,3 +3,6 @@ Tables/
 fonts/
 images/
 tracks/
+
+# Google analytics code
+js/analytics.js
