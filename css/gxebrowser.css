@@ -19,10 +19,19 @@
 	/*width: 200px;*/
 }
 
-.track-select {
-	height: 200px;
-	/*width: 200px;*/
+.tab-content {
+	border-left: 1px solid #ecf0f1; 
+	border-right: 1px solid #ecf0f1; 
+	border-bottom: 1px solid #ecf0f1;
 }
+
+.track-select {
+	border: none;
+}
+
+.track-select > option:nth-child(odd) {
+	background: #f5f5f5;
+	}
 
 .track-input {
 	width: 65px;
