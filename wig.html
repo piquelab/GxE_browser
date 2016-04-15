@@ -46,11 +46,12 @@
   <body>
 
     <!-- Add a navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <!-- <div class="container-fluid"> -->
+      <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gxebrowser-navbar" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -60,37 +61,75 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="gxebrowser-navbar">
           <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="tables.html">Tables</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gene Expression <span class="caret"></span></a>
-              <ul class="dropdown-menu">
+              <!-- Large window -->
+              <a href="#" class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gene Expression <span class="caret"></span></a>
+              <!-- Small window -->
+              <a href="#" class="dropdown-toggle visible-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Expression <span class="caret"></span></a>
+              <!-- 
+              <ul class="dropdown-menu multi-level" role="menu">
                 <li><a href="network.html">Network Analysis</a></li>
-                <li><a href="deg.html">Differential Gene Expression</a></li>
+                <li class="dropdown-submenu">
+                  <a href="#" tabindex="-1">Differential Gene Expression</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="deg.html">Search By Treatment</a></li>
+                      <li><a href="deg_bygene.html">Search By Gene</a></li>
+                    </ul>
+                  </li>
                 <li><a href="wig.html">Data Browser</a></li>
+              </ul>
+            -->
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="network.html">Network Analysis</a></li>
+                <li><a href="wig.html">Data Browser</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Differential Gene Expression</li>
+                <li><a href="deg.html">Search By Treatment</a></li>
+                <li><a href="deg_bygene.html">Search By Gene</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Allele-Specific Expression <span class="caret"></span></a>
+              <!-- Large window -->
+              <a href="#" class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Allele-Specific Expression <span class="caret"></span></a>
+              <!-- Small window -->
+              <a href="#" class="dropdown-toggle visible-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ASE <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="ase_tables.html">ASE Results</a></li>
-                <li><a href="ase_forest.html">Forest Plots</a></li>
+                <li><a href="gwas.html">GWAS Overlap</a></li>
+                <li><a href="ase_forest.html">cASE Plots</a></li>
                 <li><a href="iase_plots.html">iASE Plots</a></li>
               </ul>
             </li>
+          </ul>
+          <!-- hide on small, xs triggers the menu icon -->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="icon icon-share"></span> Share <span class="caret"></span>
+              </a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://twitter.com/home?status=Check%20out%20the%20GxE%20Browser%20tool!%20http%3A//genome.grid.wayne.edu/gxebrowser/" target="_blank"><span class="icon icon-twitter"></span>&nbsp;Twitter</a></li>
+                  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//genome.grid.wayne.edu/gxebrowser/" target="_blank"><span class="icon icon-facebook-squared"></span>&nbsp;Facebook</a></li>
+                </ul>
+              </li>
+            <li><a href="mailto:rpique@wayne.edu,fluca@wayne.edu,gmoyerbr@wayne.edu"><span class="icon icon-mail"></span>&nbsp;Contact</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
     <!-- Breadcrumbs -->
-    <ol class="breadcrumb" aria-label="breadcrumbs">
-      <li role="menuitem"><a href="index.html">Home</a></li>
-      <li role="menuitem"><a href="#">Gene Expression</a></li>
-      <li role="menuitem" class="active">Browser</li>
-    </ol>
+    <div class="breadcrumb-container">
+      <ol class="breadcrumb" aria-label="breadcrumbs">
+        <li role="menuitem"><a href="index.html">Home</a></li>
+        <li role="menuitem"><a href="#">Gene Expression</a></li>
+        <li role="menuitem" class="active">Browser</li>
+      </ol>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
@@ -98,7 +137,7 @@
 
       <div class="track-control-div">
         <div class="row">
-          <div class="col-sm-3"> <!-- left column -->
+          <div class="col-sm-5 col-md-4 col-lg-3"> <!-- left column -->
 
             <div class="well well-sm track-control-group">
 
@@ -135,7 +174,7 @@
             </div>
           </div> <!-- end left column -->
           
-          <div class="col-sm-9"> <!-- right column -->
+          <div class="col-sm-7 col-md-8 col-lg-9"> <!-- right column -->
             <div>
               <p class="help title">Adding & Removing Tracks</p>
               <p class="help">Select "Add Tracks" to add sequencing data to the browser. "Remove tracks" will clear all tracks currently displayed.</p>
@@ -165,13 +204,13 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Select Tracks To Add</h4>
-            <p class="note">Hold 'control' to select multiple treatments. Switching tabs does not reset your selections.</p>
+            <p class="note">Hold 'control' to select multiple treatments. Switching tabs does not reset your selections. Each cell type has three individuals which are added by default, but you can remove them using the browser controls to the right of each track.</p>
           </div>
           <div class="modal-body">
             <ul class="nav nav-tabs" id="select-nav">
               <!-- fill content using template -->
             </ul>
-            <div class="tab-content" style="border-right: 1px solid #CCCCCC;border-left: 1px solid #CCCCCC;border-bottom: 1px solid #CCCCCC;" id="content">
+            <div class="tab-content" id="tab-content">
               <!-- fill content using template -->
             </div> <!-- /tab-content container -->
           </div>
@@ -197,22 +236,19 @@
     <!-- Template for menu -->
     <script id="select-template" type="text/x-handlebars-template">
       {{#each celltypes}}
-        <!-- set the first tab as active -->
         {{#if @first}}
+          <!-- set the first tab as active -->
           <div class="tab-pane active" id="{{name}}">
         {{else}}
           <div class="tab-pane fade" id="{{name}}">
         {{/if}}
-          <p class="note">&nbsp;</p>
           <select multiple class="track-select form-control" style="margin-bottom:10px">
             {{#each treatments}}
-              <!-- use @../index to get parent index -->
               <option class="select_treatment" data-ct={{@../index}} data-tx={{@index}}>{{name}}</option>
             {{/each}}
           </select>
         </div>
         {{/each}}
-        <p class="note">Note: Each cell type has three individuals. All tracks will be added by default, but you can remove them using the browser controls to the right of each track.</p>
     </script>
 
   </body>
