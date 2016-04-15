@@ -100,11 +100,11 @@ h4.caption {
 
 .icon-share:before { 
 	content: '\e800'; 
-	color: white;
+	/*color: white;*/
 }
 .icon-mail:before { 
 	content: '\e803'; 
-	color: white;
+	/*color: white;*/
 }
 .icon-twitter:before { 
 	content: '\e801';
