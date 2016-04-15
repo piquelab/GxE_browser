@@ -204,13 +204,13 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Select Tracks To Add</h4>
-            <p class="note">Hold 'control' to select multiple treatments. Switching tabs does not reset your selections.</p>
+            <p class="note">Hold 'control' to select multiple treatments. Switching tabs does not reset your selections. Each cell type has three individuals which are added by default, but you can remove them using the browser controls to the right of each track.</p>
           </div>
           <div class="modal-body">
             <ul class="nav nav-tabs" id="select-nav">
               <!-- fill content using template -->
             </ul>
-            <div class="tab-content" style="border-right: 1px solid #CCCCCC;border-left: 1px solid #CCCCCC;border-bottom: 1px solid #CCCCCC;" id="content">
+            <div class="tab-content" id="tab-content">
               <!-- fill content using template -->
             </div> <!-- /tab-content container -->
           </div>
@@ -236,22 +236,19 @@
     <!-- Template for menu -->
     <script id="select-template" type="text/x-handlebars-template">
       {{#each celltypes}}
-        <!-- set the first tab as active -->
         {{#if @first}}
+          <!-- set the first tab as active -->
           <div class="tab-pane active" id="{{name}}">
         {{else}}
           <div class="tab-pane fade" id="{{name}}">
         {{/if}}
-          <p class="note">&nbsp;</p>
           <select multiple class="track-select form-control" style="margin-bottom:10px">
             {{#each treatments}}
-              <!-- use @../index to get parent index -->
               <option class="select_treatment" data-ct={{@../index}} data-tx={{@index}}>{{name}}</option>
             {{/each}}
           </select>
         </div>
         {{/each}}
-        <p class="note">Note: Each cell type has three individuals. All tracks will be added by default, but you can remove them using the browser controls to the right of each track.</p>
     </script>
 
   </body>

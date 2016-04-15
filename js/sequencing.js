@@ -24,7 +24,7 @@ $('document').ready(function() {
 
 	// Push the templates to the page
 	showTemplate(tabs_template, track_data, "#select-nav")
-	showTemplate(select_template, track_data, "#content")
+	showTemplate(select_template, track_data, "#tab-content")
 
 	// Simulate a click on the first tab, otherwise
 	// Upon loading it won't show any tab
