@@ -28,81 +28,8 @@
   </head>
   <body>
 
-    <!-- Add a navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <!-- <div class="container-fluid"> -->
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gxebrowser-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">gxebrowser</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="gxebrowser-navbar">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="tables.html">Tables</a></li>
-            <li class="dropdown">
-              <!-- Large window -->
-              <a href="#" class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gene Expression <span class="caret"></span></a>
-              <!-- Small window -->
-              <a href="#" class="dropdown-toggle visible-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Expression <span class="caret"></span></a>
-              <!-- 
-              <ul class="dropdown-menu multi-level" role="menu">
-                <li><a href="network.html">Network Analysis</a></li>
-                <li class="dropdown-submenu">
-                  <a href="#" tabindex="-1">Differential Gene Expression</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="deg.html">Search By Treatment</a></li>
-                      <li><a href="deg_bygene.html">Search By Gene</a></li>
-                    </ul>
-                  </li>
-                <li><a href="wig.html">Data Browser</a></li>
-              </ul>
-            -->
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="network.html">Network Analysis</a></li>
-                <li><a href="wig.html">Data Browser</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Differential Gene Expression</li>
-                <li><a href="deg.html">Search By Treatment</a></li>
-                <li><a href="deg_bygene.html">Search By Gene</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <!-- Large window -->
-              <a href="#" class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Allele-Specific Expression <span class="caret"></span></a>
-              <!-- Small window -->
-              <a href="#" class="dropdown-toggle visible-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ASE <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="ase_tables.html">ASE Results</a></li>
-                <li><a href="gwas.html">GWAS Overlap</a></li>
-                <li><a href="ase_forest.html">cASE Plots</a></li>
-                <li><a href="iase_plots.html">iASE Plots</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!-- hide on small, xs triggers the menu icon -->
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="icon icon-share"></span> Share <span class="caret"></span>
-              </a>
-                <ul class="dropdown-menu">
-                  <li><a href="https://twitter.com/home?status=Check%20out%20the%20GxE%20Browser%20tool!%20http%3A//genome.grid.wayne.edu/gxebrowser/" target="_blank"><span class="icon icon-twitter"></span>&nbsp;Twitter</a></li>
-                  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//genome.grid.wayne.edu/gxebrowser/" target="_blank"><span class="icon icon-facebook-squared"></span>&nbsp;Facebook</a></li>
-                </ul>
-              </li>
-            <li><a href="mailto:rpique@wayne.edu,fluca@wayne.edu,gmoyerbr@wayne.edu"><span class="icon icon-mail"></span>&nbsp;Contact</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+    <!-- Add a navbar. Use jQuery to insert navbar from 'navigation.html' -->
+    <nav class="navbar navbar-default navbar-fixed-top" id="nav-placeholder">
     </nav>
 
     <!-- Breadcrumbs -->
@@ -121,8 +48,7 @@
           <div class="well">
             <h3>Gene Expression</h3>
             <ul>
-              <li><a href="network.html">Network Analysis</a></li>
-              <li><a href="wig.html">Data Browser</a></li>
+              <li><a href="wig.html">Wig Track Browser</a></li>
               <li>Differential Gene Expression
                 <ul>
                   <li><a href="deg.html">Search By Treatment</a></li>
@@ -145,10 +71,10 @@
         </div>
     </div> <!-- /container -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include necessary javaScript files/libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/gxebrowser.js"></script>
+    <script src="js/analytics.js"></script>
   </body>
 </html>
