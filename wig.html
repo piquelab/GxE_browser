@@ -8,17 +8,20 @@
     <title>GxE Browser</title>
 
     <!-- Bootstrap & other CSS-->
-    <link type="text/css" rel="stylesheet"
+<!--     <link type="text/css" rel="stylesheet"
       href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
-    <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+ -->    <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <!-- <link type="text/css" rel="stylesheet" href="//igv.org/web/beta/igv-beta.css"> -->
     <link type="text/css" rel="stylesheet" href="//igv.org/web/release/0.9.3/igv-0.9.3.css">
+    <link type="text/css" href="css/jquery-ui-1.12.0.css" rel="stylesheet">
     <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="css/gxebrowser.css" rel="stylesheet">
 
     <!-- js libraries & scripts -->
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script> -->
+    <!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+    <script type="text/javascript" src="js/jquery/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui-1.12.0.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/handlebars-v3.0.3.js"></script>
     <script type="text/javascript" src="js/gxebrowser.js"></script>
@@ -61,6 +64,7 @@
     <!-- Page Content -->
     <div class="container">
       <h1>GxE Browser</h1>
+      <div class="btn btn-xs btn-default" id="js-tog-track-ctrls">Hide track controls</div>
 
       <div class="track-control-div">
         <div class="row">

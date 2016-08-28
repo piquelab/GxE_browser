@@ -144,4 +144,15 @@ $('document').ready(function() {
 		}
 	}) // end js-set-data-range
 
+	// Show or hide the track controls
+	$("#js-tog-track-ctrls").click(function(){
+		if( $(".track-control-div").css("display") == "block" ) {
+			$(".track-control-div").hide(300);
+			$("#js-tog-track-ctrls").text("Show track controls");
+		} else {
+			$(".track-control-div").show(300);
+			$("#js-tog-track-ctrls").text("Hide track controls");
+		}
+	}) // end js-tog-track-ctrls
+
 })
