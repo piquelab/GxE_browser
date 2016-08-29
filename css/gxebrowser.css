@@ -1,4 +1,9 @@
 
+/* Open and close the menus while hovering */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .breadcrumb-container {
 	margin-top: 60px;
 }
