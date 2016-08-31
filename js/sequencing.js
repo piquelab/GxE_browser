@@ -63,8 +63,16 @@ $('document').ready(function() {
 			var ctIdx = $(this).data("ct");
 			var txIdx = $(this).data("tx");
 
-			// Add the corresponding tracks to the browser
-			var tracks = track_data["celltypes"][ctIdx]["treatments"][txIdx]["tracks"]
+			// Get the data for the selected treatment
+			var tx_data = track_data["celltypes"][ctIdx]["treatments"][txIdx]
+
+			// Find the corresponding controls
+			var ctrl = track_data["celltypes"][ctIdx]["controls"][tx_data.panel-1]["treatments"][tx_data.control-1]
+
+			// Add the tracks to the browser
+			tracks = [];
+			tx_data.tracks.forEach(function(t){ tracks.push(t) });
+			ctrl.tracks.forEach(function(t){ tracks.push(t) });
 			tracks.forEach(function(track){
 				console.log("Adding track " + track.url);
 				
